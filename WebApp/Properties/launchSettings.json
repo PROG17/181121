@@ -8,11 +8,19 @@
     }
   },
   "profiles": {
-    "IIS Express": {
+    "IIS Express (Dev)": {
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "MyKey": "MyKeyOverride"
+      }
+    },
+    "IIS Express (Stage)": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Stage"
       }
     },
     "WebApp": {
