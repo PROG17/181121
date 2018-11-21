@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -55,6 +57,15 @@ namespace WebApp.Controllers
         public IActionResult Contact()
         {
             ViewData["Message"] = "Your contact page.";
+
+            var client = new SmtpClient("smtp.mailtrap.io", 2525) // hostname, port
+            {
+                // OBS! Skapa konto själv på mailtrap.io och hämta ditt eget username och password.
+                Credentials = new NetworkCredential("037b0f20d554a8", "1409040b2f4aef"), // username, password
+                EnableSsl = true
+            };
+            // from, to, subject, text
+            client.Send("from@example.com", "to@example.com", "Rubriken på mejlet", "Texten i meddelandet");
 
             return View();
         }
